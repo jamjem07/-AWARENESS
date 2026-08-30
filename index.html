@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>توعية | AWARENESS - منصة توعية الرسمية للتمكين الشباب</title>
+    <title>توعية | AWARENESS- منصة توعية الرسمية للتمكين الشباب</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
@@ -100,12 +100,12 @@
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1150px;
             margin: 0 auto;
             padding: 40px 20px;
         }
 
-        /* قسم الهيرو المطابق للصورة */
+        /* قسم الهيرو */
         .hero {
             text-align: center;
             background: linear-gradient(160deg, #111827 0%, #0b0f19 100%);
@@ -113,7 +113,7 @@
             border-radius: 20px;
             padding: 70px 20px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            margin-bottom: 50px;
+            margin-bottom: 60px;
         }
 
         .hero h1 {
@@ -153,7 +153,127 @@
             transform: scale(1.03);
         }
 
-        /* الأقسام الأخرى */
+        /* عنوان قسم الخدمات الكلي */
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+
+        .section-header h2 {
+            font-size: 36px;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        /* شبكة الخدمات (Grid) */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 35px 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s, border-color 0.3s;
+            position: relative;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(37, 99, 235, 0.15);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            color: var(--accent);
+            margin-bottom: 25px;
+            border: 1px solid rgba(37, 99, 235, 0.3);
+        }
+
+        .service-card h3 {
+            font-size: 22px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+
+        .service-card > p {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .feature-list li {
+            color: var(--text-main);
+            font-size: 14px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .feature-list li i {
+            color: var(--accent);
+            margin-top: 5px;
+            font-size: 12px;
+        }
+
+        .card-btn {
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--accent);
+            text-align: center;
+            padding: 12px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            border: 1px solid rgba(37, 99, 235, 0.3);
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .card-btn:hover {
+            background: #2563eb;
+            color: #fff;
+        }
+
+        /* الأقسام الباقية (عن المشروع، الرؤية، إلخ) */
         .section-box {
             background: var(--card-bg);
             border: 1px solid var(--border);
@@ -186,20 +306,20 @@
         @media(max-width: 768px) {
             nav { display: none; }
             .hero h1 { font-size: 30px; }
+            .section-header h2 { font-size: 28px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- الشريط العلوي الموجود في الصورة -->
     <div class="top-banner">
-      🚀   منصة توعية الرسمية للتمكين الشباب - طريقك نحو الاستقلالية المادية
+        منصة توعية الرسمية للتمكين الشباب - طريقك نحو الاستقلالية المادية
     </div>
 
     <header>
         <a href="index.html" class="logo-area">
             <i class="fa-solid fa-lightbulb bulb-logo"></i>
-            <span class="logo">توعية | AWARENESS</span>
+            <span class="logo">توعية | TAWIYA</span>
         </a>
         <nav>
             <a href="#about">عن المشروع</a>
@@ -212,25 +332,115 @@
 
     <div class="container">
         
-        <!-- قسم الهيرو الرئيسي مطابق للصورة -->
+        <!-- قسم الهيرو -->
         <section class="hero" id="home">
             <h1>ابنِ مستقبلك مع <span>مشروع توعية</span></h1>
             <p>بيئة تمكينية احترافية تهدف لتطوير التفكير الشبابي، وصقل المهارات الحية، وتقديم استشارات وحلول رقمية تفتح آفاق الاستقلالية المادية وسوق العمل الحديث.</p>
             <a href="#services" class="btn-main">اكتشف مجالاتنا الآن ←</a>
         </section>
 
+        <!-- قسم مجالاتنا وخدماتنا (مطابق للتصاور المرفقة تماماً) -->
+        <div id="services">
+            <div class="section-header">
+                <span class="section-tag">مجالات العمل والخدمات</span>
+                <h2>أقسام ومجالات مشروع توعية</h2>
+                <p>منظومة متكاملة لدعم الشباب والمشاريع من التفكير إلى التنفيذ الاحترافي</p>
+            </div>
+
+            <div class="services-grid">
+                
+                <!-- 1. قسم خدمات المونتاج -->
+                <div class="service-card">
+                    <div>
+                        <div class="card-icon">
+                            <i class="fa-solid fa-clapperboard"></i>
+                        </div>
+                        <h3>قسم خدمات المونتاج</h3>
+                        <p>وحدة إنتاج داخلية متخصصة في صناعة وتعديل الفيديو الجذاب:</p>
+                        <ul class="feature-list">
+                            <li><i class="fa-solid fa-sparkles"></i> إنتاج فيديوهات السوشيال ميديا (Shorts/Reels).</li>
+                            <li><i class="fa-solid fa-sparkles"></i> صناعة الفيديوهات الإعلانية الاحترافية.</li>
+                            <li><i class="fa-solid fa-sparkles"></i> مونتاج محتوى الـ Gaming والترفيه.</li>
+                        </ul>
+                    </div>
+                    <a href="#" class="card-btn">Video Production</a>
+                </div>
+
+                <!-- 2. قسم تكوين العقلية -->
+                <div class="service-card">
+                    <div>
+                        <div class="card-icon">
+                            <i class="fa-solid fa-brain"></i>
+                        </div>
+                        <h3>قسم تكوين العقلية (Mindset)</h3>
+                        <p>بناء الشخصية القيادية والعقلية المرنة القادرة على الإنتاج والمواجهة:</p>
+                        <ul class="feature-list">
+                            <li><i class="fa-solid fa-sparkles"></i> تطوير الانضباط الشخصي والالتزام.</li>
+                            <li><i class="fa-solid fa-sparkles"></i> إدارة الوقت والتخطيط للإنتاجية.</li>
+                            <li><i class="fa-solid fa-sparkles"></i> التعامل مع الفشل وتحويل التحديات لفرص.</li>
+                        </ul>
+                    </div>
+                    <a href="#" class="card-btn">Mindset & Growth</a>
+                </div>
+
+                <!-- 3. قسم الاستشارات والمرافقة -->
+                <div class="service-card">
+                    <div>
+                        <div class="card-icon">
+                            <i class="fa-solid fa-bullseye"></i>
+                        </div>
+                        <h3>قسم الإستشارات والمرافقة</h3>
+                        <p>مرافقة شاملة ومباشرة للشباب لرسم خطط عملية واضحة للنجاح:</p>
+                        <ul class="feature-list">
+                            <li><i class="fa-solid fa-sparkles"></i> جلسات فردية وجماعية لاختيار المسار المهني.</li>
+                            <li><i class="fa-solid fa-sparkles"></i> تفسير الخدمات وتطوير مهارات التواصل الفعّال.</li>
+                            <li><i class="fa-solid fa-sparkles"></i> متابعة دورية لقياس التقدم وتصحيح المسار.</li>
+                        </ul>
+                    </div>
+                    <a href="#" class="card-btn">Coaching & Guidance</a>
+                </div>
+
+                <!-- 4. البراندينغ وإستراتيجية العلامة -->
+                <div class="service-card">
+                    <div>
+                        <div class="card-icon">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </div>
+                        <h3>البراندينغ وإستراتيجية العلامة</h3>
+                        <p>بناء هوية بصرية واستراتيجية حضور متكاملة للمشاريع والعلامات:</p>
+                        <ul class="feature-list">
+                            <li><i class="fa-solid fa-sparkles"></i> تصميم الهوية البصرية (Logo, Colors, Guidelines).</li>
+                            <li><i class="fa-solid fa-sparkles"></i> إستراتيجية الرسالة والظهور الرقمي.</li>
+                            <li><i class="fa-solid fa-sparkles"></i> خدمات للعملاء وللشباب المتكونين بالمنصة.</li>
+                        </ul>
+                    </div>
+                    <a href="#" class="card-btn">Branding & Strategy</a>
+                </div>
+
+                <!-- 5. بناء وبيع أفكار المشاريع -->
+                <div class="service-card" style="grid-column: 1 / -1; background: linear-gradient(135deg, #111827 0%, #1e1b4b 100%); border-color: rgba(245, 158, 11, 0.3);">
+                    <div>
+                        <div class="card-icon" style="background: rgba(245, 158, 11, 0.15); color: var(--gold); border-color: rgba(245, 158, 11, 0.3);">
+                            <i class="fa-solid fa-crown"></i>
+                        </div>
+                        <h3>بناء وبيع أفكار المشاريع (Business-in-a-Box)</h3>
+                        <p>خدمة VIP موجهة للمستثمرين وأصحاب رأس المال الباحثين عن مشاريع جاهزة ومدروسة للانطلاق الفوري:</p>
+                        <ul class="feature-list">
+                            <li><i class="fa-solid fa-sparkles" style="color: var(--gold);"></i> خلق فكرة مشروع كاملة (Business Plan, Concept, الهوية، خطة التسويق) كـ "مشروع جاهز".</li>
+                            <li><i class="fa-solid fa-sparkles" style="color: var(--gold);"></i> دعم شامل من الفكرة والانطلاق الفعلي مع توفير المونتاج والبراندينغ وتشكيل الفريق.</li>
+                            <li><i class="fa-solid fa-sparkles" style="color: var(--gold);"></i> <strong>الأثر الاجتماعي:</strong> توفير فرص شغل مدفوعة للشباب المتكونين في "توعية" لتنفيذ وإدارة هذه المشاريع.</li>
+                        </ul>
+                    </div>
+                    <a href="#" class="card-btn" style="background: rgba(245, 158, 11, 0.1); color: var(--gold); border-color: rgba(245, 158, 11, 0.3);">Premium Investment</a>
+                </div>
+
+            </div>
+        </div>
+
         <!-- عن المشروع -->
         <div class="section-box" id="about">
             <h2>عن المشروع</h2>
             <p>توعية هو مشروع تونسي يهدف لخلق بيئة جديدة للشباب، تشجع على الاستقلالية المادية وتغيير طريقة التفكير تجاه العمل، المال، والمهارات الرقمية.</p>
-        </div>
-
-        <!-- مجالاتنا وخدماتنا -->
-        <div class="section-box" id="services">
-            <h2>مجالاتنا وخدماتنا</h2>
-            <p>• الفورماسيونات والتكوين العملي (مونتاج، تصميم، تسويق رقمي).</p>
-            <p>• الاستشارات ومرافقة الشباب في مساراتهم.</p>
-            <p>• خدمة المونتاج والبراندينغ وبناء مشاريع جاهزة.</p>
         </div>
 
         <!-- الرؤية والرسالة -->
