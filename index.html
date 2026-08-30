@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>توعية | AWARENESS - مشروع توعية وتمكين  للشباب </title>
-    <!-- استيراد خط كاييرو والأيقونات -->
+    <title>توعية | TAWIYA - مشروع توعية وتمكين اقتصادي للشباب التونسي</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
@@ -14,9 +13,8 @@
         :root {
             --bg-color: #0b0f19;
             --card-bg: #111827;
-            --card-hover: #1f2937;
             --accent: #38bdf8;
-            --accent-glow: rgba(56, 189, 248, 0.2);
+            --accent-glow: rgba(56, 189, 248, 0.4);
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --border: #1e293b;
@@ -38,7 +36,7 @@
         }
 
         header {
-            background: rgba(11, 15, 25, 0.85);
+            background: rgba(11, 15, 25, 0.9);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
             padding: 15px 5%;
@@ -52,20 +50,50 @@
 
         .logo-area {
             display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .bulb-logo {
+            font-size: 26px;
+            color: var(--gold);
+            animation: bulbGlow 2.5s infinite alternate ease-in-out;
+        }
+
+        @keyframes bulbGlow {
+            0% {
+                color: #555;
+                text-shadow: none;
+                transform: scale(1);
+            }
+            50% {
+                color: var(--gold);
+                text-shadow: 0 0 15px var(--gold), 0 0 30px rgba(245, 158, 11, 0.6);
+                transform: scale(1.1);
+            }
+            100% {
+                color: #555;
+                text-shadow: none;
+                transform: scale(1);
+            }
+        }
+
+        .logo-texts {
+            display: flex;
             flex-direction: column;
         }
 
         .logo {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 900;
             color: var(--accent);
             letter-spacing: 1px;
         }
 
         .logo-sub {
-            font-size: 11px;
+            font-size: 10px;
             color: var(--text-muted);
-            letter-spacing: 0.5px;
         }
 
         nav {
@@ -82,7 +110,7 @@
             transition: color 0.2s;
         }
 
-        nav a:hover {
+        nav a:hover, nav a.active {
             color: var(--accent);
         }
 
@@ -106,19 +134,18 @@
             padding: 50px 20px;
         }
 
-        /* قسم الترحيب والفيديو */
         .hero {
             text-align: center;
             margin-bottom: 70px;
             background: linear-gradient(160deg, #162032 0%, #0b0f19 100%);
             border: 1px solid var(--border);
             border-radius: 24px;
-            padding: 50px 20px;
+            padding: 60px 20px;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
 
         .hero h1 {
-            font-size: 40px;
+            font-size: 38px;
             font-weight: 900;
             margin-bottom: 15px;
             background: linear-gradient(to left, #38bdf8, #818cf8);
@@ -127,10 +154,10 @@
         }
 
         .hero .subtitle {
-            font-size: 18px;
+            font-size: 17px;
             color: var(--text-muted);
             max-width: 800px;
-            margin: 0 auto 10px auto;
+            margin: 0 auto 20px auto;
         }
 
         .hero .meta-badge {
@@ -141,36 +168,13 @@
             border-radius: 20px;
             font-size: 14px;
             font-weight: 700;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             border: 1px solid rgba(56, 189, 248, 0.2);
         }
 
-        .video-container {
-            position: relative;
-            width: 100%;
-            max-width: 850px;
-            margin: 0 auto;
-            padding-bottom: 56.25%;
-            height: 0;
-            border-radius: 16px;
-            overflow: hidden;
-            border: 2px solid var(--accent);
-            box-shadow: 0 15px 35px var(--accent-glow);
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        /* الأقسام العامة */
         .section-title {
             text-align: center;
-            font-size: 32px;
+            font-size: 30px;
             font-weight: 900;
             margin-bottom: 15px;
             color: var(--text-main);
@@ -181,10 +185,9 @@
             color: var(--text-muted);
             max-width: 650px;
             margin: 0 auto 50px auto;
-            font-size: 16px;
+            font-size: 15px;
         }
 
-        /* نظرة عامة والمشكلة */
         .grid-2 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -206,7 +209,7 @@
         }
 
         .box h3 {
-            font-size: 22px;
+            font-size: 20px;
             color: var(--accent);
             margin-bottom: 15px;
             display: flex;
@@ -217,10 +220,9 @@
         .box p {
             color: var(--text-muted);
             margin-bottom: 12px;
-            font-size: 15px;
+            font-size: 14px;
         }
 
-        /* خدمات المشروع (5 محاور) */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -240,20 +242,19 @@
 
         .service-card:hover {
             border-color: var(--accent);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
         }
 
         .service-num {
             position: absolute;
             top: 20px;
             left: 20px;
-            font-size: 36px;
+            font-size: 34px;
             font-weight: 900;
             color: rgba(56, 189, 248, 0.08);
         }
 
         .service-card h4 {
-            font-size: 20px;
+            font-size: 19px;
             font-weight: 700;
             color: var(--text-main);
             margin-bottom: 12px;
@@ -262,85 +263,9 @@
         .service-card p {
             color: var(--text-muted);
             font-size: 14px;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
-        /* الأثر ونموذج العمل */
-        .impact-section {
-            background: linear-gradient(145deg, #111827, #162032);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 40px;
-            margin-bottom: 70px;
-        }
-
-        .impact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .impact-item h4 {
-            color: var(--gold);
-            font-size: 18px;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .impact-item p {
-            color: var(--text-muted);
-            font-size: 14px;
-        }
-
-        /* قسم الاتصال والدعم */
-        .contact-section {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 40px;
-            margin-bottom: 70px;
-            text-align: center;
-        }
-
-        .contact-grid {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-            margin-top: 25px;
-        }
-
-        .contact-card {
-            background: #162032;
-            border: 1px solid var(--border);
-            padding: 20px 30px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            text-decoration: none;
-            color: var(--text-main);
-            transition: transform 0.2s, border-color 0.2s;
-        }
-
-        .contact-card:hover {
-            transform: translateY(-3px);
-            border-color: var(--accent);
-        }
-
-        .contact-card i {
-            font-size: 24px;
-            color: var(--accent);
-        }
-
-        .contact-card span {
-            font-weight: 600;
-            font-size: 16px;
-        }
-
-        /* زر دعوة للتفاعل */
         .cta-box {
             text-align: center;
             background: linear-gradient(135deg, #0284c7, #0369a1);
@@ -350,7 +275,7 @@
         }
 
         .cta-box h3 {
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 900;
             margin-bottom: 15px;
             color: #fff;
@@ -359,7 +284,7 @@
         .cta-box p {
             color: #e0f2fe;
             margin-bottom: 25px;
-            font-size: 16px;
+            font-size: 15px;
         }
 
         .btn {
@@ -372,11 +297,10 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            transition: background 0.2s, transform 0.2s;
+            transition: transform 0.2s;
         }
 
         .btn:hover {
-            background-color: #f0f9ff;
             transform: scale(1.05);
         }
 
@@ -390,7 +314,6 @@
         }
 
         @media(max-width: 768px) {
-            .hero h1 { font-size: 28px; }
             nav a:not(.login-btn) { display: none; }
         }
     </style>
@@ -398,171 +321,81 @@
 <body>
 
     <header>
-        <div class="logo-area">
-            <div class="logo">توعية | TAWIYA</div>
-            <div class="logo-sub">مشروع توعية وتمكين فكري و تقني للشباب </div>
-        </div>
+        <a href="index.html" class="logo-area">
+            <i class="fa-solid fa-lightbulb bulb-logo"></i>
+            <div class="logo-texts">
+                <div class="logo">توعية | TAWIYA</div>
+                <div class="logo-sub">تمكين اقتصادي للشباب</div>
+            </div>
+        </a>
         <nav>
-            <a href="#overview">نظرة عامة</a>
-            <a href="#services">خدمات المشروع</a>
-            <a href="#impact">الأثر</a>
-            <a href="#contact">اتصل بنا</a>
-            <a href="#login" class="login-btn"><i class="fa-solid fa-user-lock"></i> تسجيل الدخول</a>
+            <a href="index.html" class="active">الرئيسية</a>
+            <a href="contact.html">اتصل بنا</a>
+            <a href="auth.html" class="login-btn"><i class="fa-solid fa-user-circle"></i> دخول / تسجيل</a>
         </nav>
     </header>
 
     <div class="container">
         
-        <!-- قسم الترحيب والفيديو التقديمي -->
-        <section class="hero" id="home">
+        <section class="hero">
             <div class="meta-badge">٢٠٢٦ • تونس — 2026 • Tunisia</div>
             <h1>خلق بيئة جديدة للشباب التونسي</h1>
             <p class="subtitle">مشروع يجمع بين التكوين، الاستشارة، والخدمات التقنية باش يوفر مسار واضح ومتكامل: تعلّم، تطبيق، ثم كسب دخل حقيقي.</p>
-            
-            <div class="video-container" style="margin-top: 30px;">
-                <!-- استبدل الرابط أدناه برابط فيديو يوتيوب التقديمي الخاص بالمشروع -->
-                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="فيديو تقديم مشروع توعية" allowfullscreen></iframe>
-            </div>
+            <a href="auth.html" class="btn" style="background: var(--accent); color: #0b0f19;"><i class="fa-solid fa-rocket"></i> ابدأ رحلتك الآن</a>
         </section>
 
-        <!-- نظرة عامة والإشكالية -->
         <div class="grid-2" id="overview">
             <div class="box">
                 <h3><i class="fa-solid fa-compass"></i> نظرة عامة على المشروع</h3>
-                <p>توعية هو مشروع تونسي يهدف لخلق بيئة جديدة للشباب، بيئة تشجع على الاستقلالية المادية وتغيير طريقة التفكير (mindset) تجاه العمل، المال، والمهارات الرقمية[cite: 1].</p>
+                <p>توعية هو مشروع تونسي يهدف لخلق بيئة جديدة للشباب، بيئة تشجع على الاستقلالية المادية وتغيير طريقة التفكير (Mindset) تجاه العمل، المال، والمهارات الرقمية[cite: 1].</p>
                 <p>المشروع يجمع بين التكوين، الاستشارة، والخدمات التقنية (خاصة المونتاج) باش يوفر مسار واضح ومتكامل: تعلّم، تطبيق، ثم كسب دخل حقيقي[cite: 1].</p>
             </div>
             
             <div class="box">
                 <h3><i class="fa-solid fa-triangle-exclamation"></i> الإشكالية (The Problem)</h3>
-                <p>عدد كبير من الشباب في تونس عندهم إمكانيات ومهارات، لكن ينقصهم[cite: 1]:</p>
-                <p><strong>التوجيه العملي:</strong> وين يبداو وكيفاش يحوّلوا مهارة إلى مصدر رزق[cite: 1].</p>
-                <p><strong>الثقة والـ Mindset:</strong> خوف من الفشل، أو فكرة إن "النجاح" ما ينجّمش يجي من عندهم[cite: 1].</p>
-                <p><strong>المحيط المناسب:</strong> نقص في مجتمع يشجع، يحاسب، ويفتح فرص حقيقية[cite: 1].</p>
+                <p>عدد كبير من الشباب في تونس عندهم إمكانيات ومهارات، لكن ينقصهم التوجيه العملي، الثقة والـ Mindset، والمحيط المناسب للنجاح[cite: 1].</p>
             </div>
         </div>
 
-        <!-- رؤية ورسالة المشروع -->
-        <div class="grid-2">
-            <div class="box" style="border-color: rgba(56, 189, 248, 0.4);">
-                <h3><i class="fa-solid fa-eye"></i> الرؤية والرسالة</h3>
-                <p><strong>الرؤية:</strong> جيل تونسي واثق من نفسه، قادر يخلق دخل خاص بيه من مهاراته، وما يبقاش يستنى الفرصة — يخلقها[cite: 1].</p>
-                <p><strong>الرسالة:</strong> نوفروا تكوين وخدمات ومرافقة عملية تحول أي شاب مهتم إلى شخص عندو مهارة مطلوبة في السوق، مشروع صغير شغّال، ودخل حقيقي[cite: 1].</p>
-            </div>
-            
-            <div class="box" style="border-color: rgba(56, 189, 248, 0.4);">
-                <h3><i class="fa-solid fa-users"></i> الفئة المستهدفة (Target Audience)</h3>
-                <p>• شباب من 16 إلى 30 سنة، طلبة أو خريجين بلا عمل[cite: 1].</p>
-                <p>• أشخاص عندهم مهارة (تصوير، تصميم، مونتاج، تسويق...) لكن ما يعرفوش كيفاش يربحوا منها[cite: 1].</p>
-                <p>• أشخاص يحبوا يبداو مشروع صغير أو يعملوا فريلانس (Freelance) لكن محتاجين مرافقة[cite: 1].</p>
-            </div>
-        </div>
-
-        <!-- خدمات المشروع (5 محاور) -->
-        <h2 class="section-title" id="services">خدمات المشروع (Core Services)</h2>
+        <h2 class="section-title">خدمات المشروع (Core Services)</h2>
         <p class="section-desc">يبني مشروع "توعية" على خمسة محاور أساسية لضمان النجاح وتحقيق التمكين الاقتصادي الفعلي[cite: 1].</p>
 
         <div class="services-grid">
-            
-            <!-- محور 1 -->
             <div class="service-card">
                 <div class="service-num">01</div>
-                <h4>الفورماسيونات (التكوين - Trainings)</h4>
-                <p>• ورشات وكورسات عملية: مونتاج فيديو، تصميم، تسويق رقمي، إدارة السوشل ميديا[cite: 1].</p>
-                <p>• محتوى يركز على المهارة + كيفاش تبيعها (Pricing، عملاء، عروض)[cite: 1].</p>
-                <p>• تكوين خاص في الـ Mindset: الانضباط، إدارة الوقت، والتعامل مع الفشل[cite: 1].</p>
+                <h4>الفورماسيونات (التكوين)</h4>
+                <p>ورشات وكورسات عملية: مونتاج فيديو، تصميم، تسويق رقمي، وإدارة السوشل ميديا مع تركيز على الـ Mindset[cite: 1].</p>
             </div>
 
-            <!-- محور 2 -->
             <div class="service-card">
                 <div class="service-num">02</div>
-                <h4>الاستشارات (Consulting)</h4>
-                <p>• جلسات فردية أو جماعية لمرافقة الشاب في اختيار مساره ووضع خطة عمل واضحة[cite: 1].</p>
-                <p>• مساعدة في بناء بورتفوليو، تسعير الخدمات، والتواصل مع أول عملاء[cite: 1].</p>
-                <p>• متابعة دورية لقياس التقدم وتصحيح المسار[cite: 1].</p>
+                <h4>الاستشارات</h4>
+                <p>جلسات فردية أو جماعية لمرافقة الشاب في اختيار مساره، وضع خطة عمل، بناء بورتفوليو وتسعير الخدمات[cite: 1].</p>
             </div>
 
-            <!-- محور 3 -->
             <div class="service-card">
                 <div class="service-num">03</div>
-                <h4>خدمة المونتاج (Video Editing)</h4>
-                <p>• وحدة إنتاج داخلية تقدم خدمات مونتاج فيديو حقيقية للعملاء (سوشل ميديا، إعلانات، محتوى)[cite: 1].</p>
-                <p>• تشغّل الشباب المتكوّنين كـ Freelancers على مشاريع حقيقية — تجربة عملية + دخل فعلي[cite: 1].</p>
-                <p>• تكون بمثابة "مخبر" يربط بين التكوين والسوق مباشرة[cite: 1].</p>
+                <h4>خدمة المونتاج</h4>
+                <p>وحدة إنتاج داخلية تقدم خدمات مونتاج حقيقية للعملاء وتشغل الشباب المتكوّنين كـ Freelancers لتحقيق دخل فعلي[cite: 1].</p>
             </div>
 
-            <!-- محور 4 -->
             <div class="service-card">
                 <div class="service-num">04</div>
-                <h4>البراندينغ (Branding)</h4>
-                <p>• بناء الهوية البصرية الكاملة للعلامات والمشاريع: لوقو، ألوان، خطوط، دليل الهوية[cite: 1].</p>
-                <p>• استراتيجية العلامة: الموقع (Positioning)، الرسالة، وطريقة الحضور في السوشل ميديا[cite: 1].</p>
-                <p>• خدمة موجهة لعملاء خارجيين وأيضًا لمشاريع الشباب المتكوّنين داخل توعية[cite: 1].</p>
+                <h4>البراندينغ</h4>
+                <p>بناء الهوية البصرية الكاملة واستراتيجية العلامة للمشاريع والعملاء الخارجيين ومشاريع الشباب[cite: 1].</p>
             </div>
 
-            <!-- محور 5 -->
-            <div class="service-card" style="grid-column: span auto;">
+            <div class="service-card">
                 <div class="service-num">05</div>
-                <h4>بناء وبيع أفكار المشاريع (Business-in-a-Box)</h4>
-                <p>• موجهة لأشخاص عندهم رأس مال ويحبوا يستثمروا في مشروع بلا فكرة واضحة[cite: 1].</p>
-                <p>• توعية تدرس السوق، تخلق فكرة مشروع كاملة ومدروسة، وتبيعها للعميل كـ"مشروع جاهز للانطلاق"[cite: 1].</p>
-                <p>• مرافقة كاملة وتشغيل إضافي للشباب المتكوّنين لتنفيذ هذه المشاريع[cite: 1].</p>
-            </div>
-
-        </div>
-
-        <!-- الأثر ونموذج العمل -->
-        <div class="impact-section" id="impact">
-            <h2 class="section-title" style="text-align: right; margin-bottom: 25px;">الأثر ونموذج العمل</h2>
-            
-            <div class="impact-grid">
-                <div class="impact-item">
-                    <h4><i class="fa-solid fa-chart-line"></i> الأثر المنتظر (Impact)</h4>
-                    <p>دخول فعلية للشباب من مهارات رقمية وخدمات حرة، تغيير الـ Mindset من "نستنى فرصة" إلى "نخلق فرصة"، وبناء مجتمع شبابي داعم بديل للإحباط والبطالة[cite: 1].</p>
-                </div>
-
-                <div class="impact-item">
-                    <h4><i class="fa-solid fa-wallet"></i> نموذج العمل (Business Model)</h4>
-                    <p>اشتراكات ورسوم في الفورماسيونات، عمولة على مشاريع المونتاج والبراندينغ، بيع مشاريع "جاهزة للانطلاق" للمستثمرين، وشراكات مع مؤسسات تحتاج محتوى وهويات بصرية[cite: 1].</p>
-                </div>
+                <h4>Business-in-a-Box</h4>
+                <p>بناء وبيع أفكار مشاريع كاملة ومدروسة (مفاهيم، خطط عمل) لأصحاب رأس المال مع تشغيل الشباب في تنفيذها[cite: 1].</p>
             </div>
         </div>
 
-        <!-- قسم الاتصال والدعم -->
-        <div class="contact-section" id="contact">
-            <h2 class="section-title">تواصل معنا</h2>
-            <p class="section-desc">عندك سؤال، تحب تنضم للفورماسيون، أو تحب تستفسر على خدماتنا؟ تواصل معنا مباشرة:</p>
-            
-            <div class="contact-grid">
-                <a href="https://wa.me/21696937831" target="_blank" class="contact-card">
-                    <i class="fa-brands fa-whatsapp" style="color: #25d366;"></i>
-                    <span>واتساب: 96937831</span>
-                </a>
-                
-                <a href="mailto:fgaieribrahim@gmail.com" class="contact-card">
-                    <i class="fa-solid fa-envelope" style="color: #38bdf8;"></i>
-                    <span>البريد: fgaieribrahim@gmail.com</span>
-                </a>
-            </div>
-        </div>
-
-        <!-- قسم تسجيل الدخول / حساب المستخدم -->
-        <div class="box" id="login" style="max-width: 500px; margin: 0 auto 50px auto; text-align: center;">
-            <h3 style="justify-content: center;"><i class="fa-solid fa-right-to-bracket"></i> تسجيل الدخول للمنصة</h3>
-            <p style="margin-bottom: 20px;">ادخل لحسابك لمتابعة الدروس، الدورات، ومشاريعك الخاصة.</p>
-            
-            <form onsubmit="event.preventDefault(); alert('تم تسجيل الدخول بنجاح!');" style="display: flex; flex-direction: column; gap: 15px;">
-                <input type="email" placeholder="البريد الإلكتروني" required style="padding: 12px; border-radius: 8px; border: 1px solid var(--border); background: #0b0f19; color: #fff;">
-                <input type="password" placeholder="كلمة المرور" required style="padding: 12px; border-radius: 8px; border: 1px solid var(--border); background: #0b0f19; color: #fff;">
-                <button type="submit" class="btn" style="justify-content: center; background: var(--accent); color: #0b0f19; cursor: pointer; border: none;">دخول</button>
-            </form>
-        </div>
-
-        <!-- دعوة للتفاعل -->
         <div class="cta-box">
             <h3>جاهز تبدأ معنا الرحلة؟</h3>
-            <p>انضم إلى الدفعة التجريبية الأولى واكتشف كيف تحول مهاراتك إلى مصدر دخل حقيقي في تونس.</p>
-            <a href="https://wa.me/21696937831" target="_blank" class="btn"><i class="fa-solid fa-rocket"></i> انضم لـ "توعية" عبر الواتساب</a>
+            <p>انضم إلى الدفعة التجريبية الأولى واكتشف كيف تحول مهاراتك إلى مصدر دخل حقيقي.</p>
+            <a href="auth.html" class="btn"><i class="fa-solid fa-user-plus"></i> أنشئ حسابك الآن</a>
         </div>
 
     </div>
@@ -572,3 +405,4 @@
     </footer>
 
 </body>
+</html>
