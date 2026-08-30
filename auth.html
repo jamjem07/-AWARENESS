@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>توعية | تسجيل الدخول</title>
+    <title>توعية | البوابة الرقمية</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
@@ -43,7 +43,6 @@
                 radial-gradient(circle at 10% 80%, rgba(245, 158, 11, 0.03) 0%, transparent 40%);
         }
 
-        /* زر العودة للرئيسية */
         .back-home {
             position: absolute;
             top: 25px;
@@ -63,7 +62,6 @@
             color: var(--accent);
         }
 
-        /* حاوية نموذج تسجيل الدخول مع تأثير الإضاءة والـ Border المتوهج */
         .login-wrapper {
             width: 100%;
             max-width: 420px;
@@ -75,15 +73,15 @@
             position: relative;
             overflow: hidden;
             margin: auto 0;
-            animation: boxFadeIn 0.8s ease-out;
+            animation: boxFadeIn 0.5s ease-out;
         }
 
         @keyframes boxFadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* 🌟 تأثير شعاع الضوء المتحرك (Light Beam/Sweep) المماثل للفيديو 🌟 */
+        /* تأثير شعاع الضوء المتحرك (Light Sweep) */
         .login-wrapper::before {
             content: '';
             position: absolute;
@@ -95,7 +93,7 @@
                 45deg,
                 transparent 45%,
                 rgba(56, 189, 248, 0.08) 48%,
-                rgba(245, 158, 11, 0.15) 50%, /* ومضة شعاع الضوء الذهبي/الأزرق */
+                rgba(245, 158, 11, 0.15) 50%,
                 rgba(56, 189, 248, 0.08) 52%,
                 transparent 55%
             );
@@ -112,7 +110,7 @@
 
         .login-header {
             text-align: center;
-            margin-bottom: 35px;
+            margin-bottom: 30px;
             position: relative;
             z-index: 2;
         }
@@ -189,14 +187,20 @@
             accent-color: var(--accent);
         }
 
-        .forgot-pass {
+        .action-link {
             color: var(--accent);
             text-decoration: none;
+            cursor: pointer;
             transition: opacity 0.2s;
+            background: none;
+            border: none;
+            font-size: 13px;
+            font-family: 'Cairo', sans-serif;
         }
 
-        .forgot-pass:hover {
+        .action-link:hover {
             opacity: 0.8;
+            text-decoration: underline;
         }
 
         .btn-submit {
@@ -229,13 +233,21 @@
             z-index: 2;
         }
 
-        .login-footer-text a {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 700;
+        /* رسالة التنبيه والنجاح الفورية */
+        .alert-box {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #22c55e;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 13px;
+            text-align: center;
+            margin-bottom: 20px;
+            display: none;
+            position: relative;
+            z-index: 2;
         }
 
-        /* روابط التواصل السريع المصغرة أسفل الصفحة */
         .quick-contact-bar {
             display: flex;
             gap: 15px;
@@ -269,9 +281,12 @@
             width: 100%;
         }
 
-        @media(max-width: 480px) {
-            .login-wrapper { padding: 30px 20px; }
-            .back-home { top: 15px; right: 20px; }
+        /* للتحكم في إظهار وإخفاء النماذج */
+        .auth-form {
+            display: none;
+        }
+        .auth-form.active {
+            display: block;
         }
     </style>
 </head>
@@ -281,43 +296,103 @@
         <i class="fa-solid fa-arrow-right"></i> الرئيسية
     </a>
 
-    <div></div> <!-- مسافة توازنية -->
+    <div></div>
 
-    <!-- نافذة تسجيل الدخول مع تأثير الضوء المتحرك -->
     <div class="login-wrapper">
-        <div class="login-header">
-            <i class="fa-solid fa-lightbulb bulb-icon"></i>
-            <h1>مرحباً بك مجدداً</h1>
-            <p>سجل دخولك لمتابعة خدمات منصة توعية</p>
+        
+        <!-- رسالة النجاح -->
+        <div id="alertBox" class="alert-box"></div>
+
+        <!-- 1. نموذج تسجيل الدخول -->
+        <div id="loginForm" class="auth-form active">
+            <div class="login-header">
+                <i class="fa-solid fa-lightbulb bulb-icon"></i>
+                <h1>تسجيل الدخول</h1>
+                <p>مرحباً بك مجدداً في منصة توعية</p>
+            </div>
+
+            <form onsubmit="handleAuth(event, 'login')">
+                <div class="form-group">
+                    <label>البريد الإلكتروني</label>
+                    <input type="email" id="loginEmail" class="form-control" placeholder="name@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label>كلمة المرور</label>
+                    <input type="password" id="loginPass" class="form-control" placeholder="••••••••" required>
+                </div>
+
+                <div class="form-options">
+                    <label class="remember-me">
+                        <input type="checkbox"> تذكرني
+                    </label>
+                    <button type="button" class="action-link" onclick="switchForm('forgotForm')">نسيت كلمة المرور؟</button>
+                </div>
+
+                <button type="submit" class="btn-submit">تسجيل الدخول</button>
+            </form>
+
+            <div class="login-footer-text">
+                ليس لديك حساب؟ <button type="button" class="action-link" onclick="switchForm('registerForm')">إنشاء حساب جديد</button>
+            </div>
         </div>
 
-        <form onsubmit="event.preventDefault(); alert('تم تسجيل الدخول بنجاح!');">
-            <div class="form-group">
-                <label>البريد الإلكتروني</name>
-                <input type="email" class="form-control" placeholder="name@example.com" required>
+        <!-- 2. نموذج إنشاء حساب جديد (Register) -->
+        <div id="registerForm" class="auth-form">
+            <div class="login-header">
+                <i class="fa-solid fa-user-plus bulb-icon"></i>
+                <h1>حساب جديد</h1>
+                <p>انضم إلينا وابدأ رحلة الاستقلالية</p>
             </div>
 
-            <div class="form-group">
-                <label>كلمة المرور</label>
-                <input type="password" class="form-control" placeholder="••••••••" required>
+            <form onsubmit="handleAuth(event, 'register')">
+                <div class="form-group">
+                    <label>الاسم الكامل</label>
+                    <input type="text" id="regName" class="form-control" placeholder="الاسم واللقب" required>
+                </div>
+
+                <div class="form-group">
+                    <label>البريد الإلكتروني</label>
+                    <input type="email" id="regEmail" class="form-control" placeholder="name@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label>كلمة المرور الجديدة</label>
+                    <input type="password" id="regPass" class="form-control" placeholder="••••••••" required>
+                </div>
+
+                <button type="submit" class="btn-submit">إنشاء الحساب</button>
+            </form>
+
+            <div class="login-footer-text">
+                لديك حساب بالفعل؟ <button type="button" class="action-link" onclick="switchForm('loginForm')">تسجيل الدخول</button>
             </div>
-
-            <div class="form-options">
-                <label class="remember-me">
-                    <input type="checkbox"> تذكرني
-                </label>
-                <a href="#" class="forgot-pass">نسيت كلمة المرور؟</a>
-            </div>
-
-            <button type="submit" class="btn-submit">تسجيل الدخول</button>
-        </form>
-
-        <div class="login-footer-text">
-            ليس لديك حساب؟ <a href="#">إنشاء حساب جديد</a>
         </div>
+
+        <!-- 3. نموذج نسيت كلمة المرور (Forgot Password) -->
+        <div id="forgotForm" class="auth-form">
+            <div class="login-header">
+                <i class="fa-solid fa-key bulb-icon"></i>
+                <h1>استعادة كلمة المرور</h1>
+                <p>أدخل بريدك الإلكتروني لاستلام رابط الاستعادة</p>
+            </div>
+
+            <form onsubmit="handleAuth(event, 'forgot')">
+                <div class="form-group">
+                    <label>البريد الإلكتروني المسجل</label>
+                    <input type="email" id="forgotEmail" class="form-control" placeholder="name@example.com" required>
+                </div>
+
+                <button type="submit" class="btn-submit">إرسال رابط الاستعادة</button>
+            </form>
+
+            <div class="login-footer-text">
+                <button type="button" class="action-link" onclick="switchForm('loginForm')"><i class="fa-solid fa-arrow-right"></i> العودة لتسجيل الدخول</button>
+            </div>
+        </div>
+
     </div>
 
-    <!-- شريط التواصل السريع بالأسفل -->
     <div>
         <div class="quick-contact-bar">
             <a href="https://wa.me/21696937831" target="_blank" class="wa">
@@ -331,6 +406,35 @@
             توعية • TAWIYA — 2026
         </footer>
     </div>
+
+    <!-- كود الجافاسكريبت للتحكم بالنماذج والتسجيل -->
+    <script>
+        function switchForm(formId) {
+            // إخفاء كل النماذج
+            document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
+            // إظهار النموذج المطلوبة
+            document.getElementById(formId).classList.add('active');
+            // إخفاء رسالة التنبيه إن كانت ظاهرة
+            document.getElementById('alertBox').style.display = 'none';
+        }
+
+        function handleAuth(event, type) {
+            event.preventDefault(); // منع إعادة تحميل الصفحة
+            const alertBox = document.getElementById('alertBox');
+            
+            if (type === 'login') {
+                alertBox.innerHTML = '<i class="fa-solid fa-check-circle"></i> تم تسجيل الدخول بنجاح! جاري تحويلك لوحة التحكم...';
+            } else if (type === 'register') {
+                alertBox.innerHTML = '<i class="fa-solid fa-check-circle"></i> تم إنشاء حسابك بنجاح! يمكنك الآن تسجيل الدخول.';
+                // العودة لتسجيل الدخول بعد ثانيتين
+                setTimeout(() => { switchForm('loginForm'); }, 2500);
+            } else if (type === 'forgot') {
+                alertBox.innerHTML = '<i class="fa-solid fa-paper-plane"></i> تم إرسال تعليمات استعادة كلمة المرور إلى بريدك الإلكتروني.';
+            }
+
+            alertBox.style.display = 'block';
+        }
+    </script>
 
 </body>
 </html>
