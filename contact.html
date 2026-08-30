@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اتصل بنا | توعية - TAWIYA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #111827;
+            --accent: #38bdf8;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #1e293b;
+            --gold: #f59e0b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        header {
+            background: rgba(11, 15, 25, 0.9);
+            border-bottom: 1px solid var(--border);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .bulb-logo {
+            font-size: 24px;
+            color: var(--gold);
+            animation: bulbGlow 2.5s infinite alternate ease-in-out;
+        }
+
+        @keyframes bulbGlow {
+            0% { color: #555; text-shadow: none; }
+            50% { color: var(--gold); text-shadow: 0 0 12px var(--gold); }
+            100% { color: #555; text-shadow: none; }
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--accent);
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        nav a:hover { color: var(--accent); }
+
+        .container {
+            max-width: 700px;
+            width: 90%;
+            margin: 50px auto;
+            text-align: center;
+        }
+
+        .contact-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        .contact-box h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .contact-box p {
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            font-size: 15px;
+        }
+
+        .contact-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-card {
+            background: #162032;
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent);
+        }
+
+        .contact-card i {
+            font-size: 24px;
+        }
+
+        .contact-card span {
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-muted);
+            font-size: 13px;
+            border-top: 1px solid var(--border);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo-area">
+            <i class="fa-solid fa-lightbulb bulb-logo"></i>
+            <span class="logo">توعية | TAWIYA</span>
+        </a>
+        <nav>
+            <a href="index.html">الرئيسية</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="contact-box">
+            <h1>تواصل معنا</h1>
+            <p>عندك استفسار، تحب تنضم للفورماسيون أو تستفسر على خدماتنا؟ نحن في خدمتك[cite: 1]:</p>
+            
+            <div class="contact-grid">
+                <a href="https://wa.me/21696937831" target="_blank" class="contact-card">
+                    <i class="fa-brands fa-whatsapp" style="color: #25d366;"></i>
+                    <span>واتساب: 96937831</span>
+                </a>
+                
+                <a href="mailto:fgaieribrahim@gmail.com" class="contact-card">
+                    <i class="fa-solid fa-envelope" style="color: #38bdf8;"></i>
+                    <span>البريد الإلكتروني: fgaieribrahim@gmail.com</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        توعية • TAWIYA — 2026 • تونس
+    </footer>
+
+</body>
+</html>
