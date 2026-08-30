@@ -3,490 +3,581 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة توعية | تمكين الشباب والمشاريع</title>
+    <title>توعية | TAWIYA - مشروع توعية وتمكين اقتصادي للشباب التونسي</title>
+    <!-- استيراد خط كاييرو والأيقونات -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #111827;
+            --card-hover: #1f2937;
+            --accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.2);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #1e293b;
+            --gold: #f59e0b;
+        }
+
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
             font-family: 'Cairo', sans-serif;
             scroll-behavior: smooth;
         }
 
         body {
-            background-color: #070f1e;
-            color: #ffffff;
-            overflow-x: hidden;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.7;
         }
 
-        /* شريط التنقل */
         header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
+            background: rgba(11, 15, 25, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 15px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 8%;
-            background: rgba(7, 15, 30, 0.9);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(56, 189, 248, 0.1);
+            position: sticky;
+            top: 0;
             z-index: 1000;
+        }
+
+        .logo-area {
+            display: flex;
+            flex-direction: column;
         }
 
         .logo {
             font-size: 24px;
             font-weight: 900;
-            color: #38bdf8;
+            color: var(--accent);
+            letter-spacing: 1px;
+        }
+
+        .logo-sub {
+            font-size: 11px;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+
+        nav {
             display: flex;
             align-items: center;
-            gap: 10px;
-            cursor: pointer;
+            gap: 20px;
         }
 
         nav a {
-            color: #94a3b8;
+            color: var(--text-muted);
             text-decoration: none;
-            margin-left: 25px;
             font-size: 15px;
             font-weight: 600;
-            transition: 0.3s;
-            cursor: pointer;
+            transition: color 0.2s;
         }
 
         nav a:hover {
-            color: #38bdf8;
+            color: var(--accent);
         }
 
-        .auth-buttons button {
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.3s;
-            margin-left: 10px;
-            font-family: 'Cairo', sans-serif;
-            font-size: 14px;
-        }
-
-        .btn-login {
-            color: #38bdf8;
-            border: 1px solid #38bdf8;
-            background: transparent;
-        }
-
-        .btn-login:hover {
+        .login-btn {
             background: rgba(56, 189, 248, 0.1);
+            color: var(--accent) !important;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 6px 16px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
         }
 
-        .btn-signup {
-            background: #38bdf8;
-            color: #070f1e;
-            border: none;
+        .login-btn:hover {
+            background: var(--accent);
+            color: #0b0f19 !important;
         }
 
-        .btn-signup:hover {
-            background: #0ea5e9;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 20px;
         }
 
-        /* إخفاء وإظهار الصفحات */
-        .page {
-            display: none;
-            min-height: 100vh;
-            padding-top: 100px;
-        }
-
-        .page.active {
-            display: block;
-        }
-
-        /* القسم الرئيسي Hero */
+        /* قسم الترحيب والفيديو */
         .hero {
-            height: calc(100vh - 80px);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
             text-align: center;
-            padding: 0 20px;
-            background: radial-gradient(circle at center, #0f2347 0%, #070f1e 70%);
+            margin-bottom: 70px;
+            background: linear-gradient(160deg, #162032 0%, #0b0f19 100%);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 50px 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
 
         .hero h1 {
-            font-size: 50px;
+            font-size: 40px;
             font-weight: 900;
-            margin-bottom: 20px;
-            background: linear-gradient(to right, #ffffff, #38bdf8);
+            margin-bottom: 15px;
+            background: linear-gradient(to left, #38bdf8, #818cf8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .hero p {
+        .hero .subtitle {
             font-size: 18px;
-            color: #94a3b8;
-            max-width: 750px;
-            margin-bottom: 35px;
-            line-height: 1.7;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto 10px auto;
         }
 
-        .main-btn {
-            background: linear-gradient(135deg, #38bdf8, #0284c7);
-            color: white;
-            padding: 14px 35px;
-            border-radius: 30px;
-            font-size: 16px;
+        .hero .meta-badge {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
             font-weight: 700;
+            margin-bottom: 30px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 850px;
+            margin: 0 auto;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 2px solid var(--accent);
+            box-shadow: 0 15px 35px var(--accent-glow);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             border: none;
-            cursor: pointer;
-            box-shadow: 0 10px 25px rgba(56, 189, 248, 0.3);
-            transition: 0.3s;
         }
 
-        .main-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(56, 189, 248, 0.5);
-        }
-
-        /* الأقسام والخدمات */
-        .section {
-            padding: 60px 8%;
-        }
-
+        /* الأقسام العامة */
         .section-title {
             text-align: center;
-            font-size: 36px;
+            font-size: 32px;
             font-weight: 900;
-            margin-bottom: 60px;
-            color: #ffffff;
+            margin-bottom: 15px;
+            color: var(--text-main);
         }
 
-        .section-title span {
-            color: #38bdf8;
+        .section-desc {
+            text-align: center;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 0 auto 50px auto;
+            font-size: 16px;
         }
 
-        .grid {
+        /* نظرة عامة والمشكلة */
+        .grid-2 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
+            margin-bottom: 70px;
         }
 
-        .card {
-            background: rgba(15, 23, 42, 0.6);
-            border: 1px solid rgba(56, 189, 248, 0.15);
-            padding: 40px 30px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            transition: 0.4s;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+        .box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 35px;
+            transition: transform 0.3s ease;
         }
 
-        .card:hover {
-            transform: translateY(-8px);
-            border-color: #38bdf8;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-            background: rgba(15, 23, 42, 0.9);
+        .box:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
         }
 
-        .card i {
-            font-size: 40px;
-            color: #38bdf8;
-            margin-bottom: 20px;
-        }
-
-        .card h3 {
+        .box h3 {
             font-size: 22px;
+            color: var(--accent);
             margin-bottom: 15px;
-            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .card p {
+        .box p {
+            color: var(--text-muted);
+            margin-bottom: 12px;
             font-size: 15px;
-            color: #94a3b8;
-            line-height: 1.6;
-            margin-bottom: 20px;
         }
 
-        .card-link {
-            color: #38bdf8;
-            text-decoration: none;
-            font-weight: bold;
+        /* خدمات المشروع (5 محاور) */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 70px;
+        }
+
+        .service-card {
+            background: linear-gradient(145deg, #111827, #0d1322);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        .service-num {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 36px;
+            font-weight: 900;
+            color: rgba(56, 189, 248, 0.08);
+        }
+
+        .service-card h4 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
             font-size: 14px;
-            display: inline-flex;
+            margin-bottom: 10px;
+        }
+
+        /* الأثر ونموذج العمل */
+        .impact-section {
+            background: linear-gradient(145deg, #111827, #162032);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 70px;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .impact-item h4 {
+            color: var(--gold);
+            font-size: 18px;
+            margin-bottom: 10px;
+            display: flex;
             align-items: center;
             gap: 8px;
-            transition: 0.3s;
         }
 
-        .card-link:hover {
-            color: #ffffff;
+        .impact-item p {
+            color: var(--text-muted);
+            font-size: 14px;
         }
 
-        /* تصميم صفحات الدخول والتسجيل */
-        .auth-container {
+        /* قسم الاتصال والدعم */
+        .contact-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 70px;
+            text-align: center;
+        }
+
+        .contact-grid {
             display: flex;
             justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .contact-card {
+            background: #162032;
+            border: 1px solid var(--border);
+            padding: 20px 30px;
+            border-radius: 12px;
+            display: flex;
             align-items: center;
-            min-height: 80vh;
-            padding: 20px;
+            gap: 15px;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: transform 0.2s, border-color 0.2s;
         }
 
-        .auth-card {
-            background: rgba(15, 23, 42, 0.85);
-            border: 1px solid rgba(56, 189, 248, 0.2);
-            padding: 40px;
+        .contact-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent);
+        }
+
+        .contact-card i {
+            font-size: 24px;
+            color: var(--accent);
+        }
+
+        .contact-card span {
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        /* زر دعوة للتفاعل */
+        .cta-box {
+            text-align: center;
+            background: linear-gradient(135deg, #0284c7, #0369a1);
             border-radius: 20px;
-            width: 100%;
-            max-width: 400px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            padding: 45px 20px;
+            box-shadow: 0 10px 30px rgba(2, 132, 199, 0.3);
         }
 
-        .auth-card h2 {
-            text-align: center;
-            margin-bottom: 25px;
-            color: #38bdf8;
+        .cta-box h3 {
             font-size: 28px;
+            font-weight: 900;
+            margin-bottom: 15px;
+            color: #fff;
         }
 
-        .input-group {
-            margin-bottom: 20px;
+        .cta-box p {
+            color: #e0f2fe;
+            margin-bottom: 25px;
+            font-size: 16px;
         }
 
-        .input-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 14px;
-            color: #cbd5e1;
-        }
-
-        .input-group input {
-            width: 100%;
-            padding: 12px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        .btn {
+            background-color: #fff;
+            color: #0369a1;
+            padding: 12px 30px;
             border-radius: 10px;
-            color: white;
-            font-size: 14px;
-        }
-
-        .input-group input:focus {
-            outline: none;
-            border-color: #38bdf8;
-        }
-
-        .auth-card .main-btn {
-            width: 100%;
-            margin-top: 10px;
-        }
-
-        .auth-switch {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 14px;
-            color: #94a3b8;
-        }
-
-        .auth-switch span {
-            color: #38bdf8;
-            cursor: pointer;
+            text-decoration: none;
             font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: background 0.2s, transform 0.2s;
         }
 
-        .auth-switch span:hover {
-            text-decoration: underline;
+        .btn:hover {
+            background-color: #f0f9ff;
+            transform: scale(1.05);
         }
 
-        /* تذييل الصفحة */
         footer {
             text-align: center;
-            padding: 30px;
-            background: #050b14;
-            color: #64748b;
-            font-size: 14px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
             margin-top: 50px;
+            font-size: 14px;
+        }
+
+        @media(max-width: 768px) {
+            .hero h1 { font-size: 28px; }
+            nav a:not(.login-btn) { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <!-- شريط التنقل الثابت -->
     <header>
-        <div class="logo" onclick="showPage('home')">
-            <i class="fa-solid fa-lightbulb"></i> توعية
+        <div class="logo-area">
+            <div class="logo">توعية | TAWIYA</div>
+            <div class="logo-sub">مشروع توعية وتمكين اقتصادي للشباب التونسي</div>
         </div>
         <nav>
-            <a onclick="showPage('home')">الرئيسية</a>
-            <a onclick="showPage('home'); scrollToSection('services')">المجالات والخدمات</a>
-            <a onclick="showPage('home'); scrollToSection('content-section')">المحتوى والدروس</a>
+            <a href="#overview">نظرة عامة</a>
+            <a href="#services">خدمات المشروع</a>
+            <a href="#impact">الأثر</a>
+            <a href="#contact">اتصل بنا</a>
+            <a href="#login" class="login-btn"><i class="fa-solid fa-user-lock"></i> تسجيل الدخول</a>
         </nav>
-        <div class="auth-buttons">
-            <button class="btn-login" onclick="showPage('login')">دخول</button>
-            <button class="btn-signup" onclick="showPage('signup')">تسجيل</button>
-        </div>
     </header>
 
-    <!-- 1. صفحة الرئيسية -->
-    <div id="home" class="page active">
-        <section class="hero">
-            <h1>ابنِ مستقبلك مع مشروع نوعيّة</h1>
-            <p>بيئة تحفيزية تهدف لتطوير التفكير الريادي، وصقل المهارات الحيّة، وتقديم استشارات وحلول رقمية متطورة تفتح أمام كل شاب آفاق الاستقلالية المالية وسوق العمل الحديث.</p>
-            <button class="main-btn" onclick="scrollToSection('services')">اكتشف الأقسام الآن</button>
-        </section>
-
-        <!-- قسم المجالات والخدمات -->
-        <section class="section" id="services">
-            <h2 class="section-title">أقسام ومجالات مشروع <span>توعيّة</span></h2>
+    <div class="container">
+        
+        <!-- قسم الترحيب والفيديو التقديمي -->
+        <section class="hero" id="home">
+            <div class="meta-badge">٢٠٢٦ • تونس — 2026 • Tunisia</div>
+            <h1>خلق بيئة جديدة للشباب التونسي</h1>
+            <p class="subtitle">مشروع يجمع بين التكوين، الاستشارة، والخدمات التقنية باش يوفر مسار واضح ومتكامل: تعلّم، تطبيق، ثم كسب دخل حقيقي.</p>
             
-            <div class="grid">
-                <div class="card">
-                    <div>
-                        <i class="fa-solid fa-video"></i>
-                        <h3>قسم خدمات المونتاج</h3>
-                        <p>وحدة إنتاج إبداعية متخصصة في صناعة وتعديل الفيديوهات الاحترافية (Shorts/Reels)، والفيديوهات الدعائية للمشاريع.</p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div>
-                        <i class="fa-solid fa-brain"></i>
-                        <h3>قسم تكوين العقلية (Mindset)</h3>
-                        <p>بناء الشخصية القيادية والنفسية والمالية المرنة القادرة على الإنتاج والتخطيط الدقيق للنجاح الشخصي.</p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div>
-                        <i class="fa-solid fa-handshake-angle"></i>
-                        <h3>قسم الاستشارات والمرافقة</h3>
-                        <p>تقديم دورات تدريبية ومرافقة شخصية مستمرة لتطوير التفكير المتقدم وتحويل الأفكار إلى مصدر دخل مستدام.</p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div>
-                        <i class="fa-solid fa-chess-board"></i>
-                        <h3>أفكار المشاريع (Business-in-a-Box)</h3>
-                        <p>تقديم فكرة مشروع جاهزة، الهوية البصرية، خطة التسويق، ودعم شامل لمنح الشباب فرصة انطلاق حقيقية.</p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div>
-                        <i class="fa-solid fa-wallet"></i>
-                        <h3>طرق الدفع والاستخلاص</h3>
-                        <p>خيارات آمنة وموثوقة لتسهيل الانخراط: دفع مباشر، تحويل بنكي (Virement)، وتطبيقات D17.</p>
-                    </div>
-                </div>
+            <div class="video-container" style="margin-top: 30px;">
+                <!-- استبدل الرابط أدناه برابط فيديو يوتيوب التقديمي الخاص بالمشروع -->
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="فيديو تقديم مشروع توعية" allowfullscreen></iframe>
             </div>
         </section>
 
-        <!-- قسم المحتوى والدروس والفيديوهات (الجديد) -->
-        <section class="section" id="content-section" style="background: rgba(0,0,0,0.2);">
-            <h2 class="section-title">قسم <span>المحتوى والدروس</span> الحصرية</h2>
-            
-            <div class="grid">
-                <div class="card">
-                    <div>
-                        <i class="fa-solid fa-play-circle"></i>
-                        <h3>محاضرة إطلاق مشروعك الأول</h3>
-                        <p>شخصية فيديو تعليمية تشرح لك خطوة بخطوة كيفاش تبدأ مشروعك برأس مال بسيط.</p>
-                    </div>
-                    <a href="#" class="card-link" onclick="alert('قريباً سيتم إطلاق الفيديو هنا!'); return false;">مشاهدة الفيديو <i class="fa-solid fa-arrow-left"></i></a>
-                </div>
-
-                <div class="card">
-                    <div>
-                        <i class="fa-solid fa-file-pdf"></i>
-                        <h3>دليل خطة العمل (Business Plan)</h3>
-                        <p>ملف PDF جاهز يوضح لك كيفاش ترسم خطة عمل مشروعك بطريقة احترافية.</p>
-                    </div>
-                    <a href="#" class="card-link" onclick="alert('قريباً سيتم إتاحة التحميل!'); return false;">تحميل الملف <i class="fa-solid fa-arrow-left"></i></a>
-                </div>
+        <!-- نظرة عامة والإشكالية -->
+        <div class="grid-2" id="overview">
+            <div class="box">
+                <h3><i class="fa-solid fa-compass"></i> نظرة عامة على المشروع</h3>
+                <p>توعية هو مشروع تونسي يهدف لخلق بيئة جديدة للشباب، بيئة تشجع على الاستقلالية المادية وتغيير طريقة التفكير (mindset) تجاه العمل، المال، والمهارات الرقمية[cite: 1].</p>
+                <p>المشروع يجمع بين التكوين، الاستشارة، والخدمات التقنية (خاصة المونتاج) باش يوفر مسار واضح ومتكامل: تعلّم، تطبيق، ثم كسب دخل حقيقي[cite: 1].</p>
             </div>
-        </section>
-    </div>
+            
+            <div class="box">
+                <h3><i class="fa-solid fa-triangle-exclamation"></i> الإشكالية (The Problem)</h3>
+                <p>عدد كبير من الشباب في تونس عندهم إمكانيات ومهارات، لكن ينقصهم[cite: 1]:</p>
+                <p><strong>التوجيه العملي:</strong> وين يبداو وكيفاش يحوّلوا مهارة إلى مصدر رزق[cite: 1].</p>
+                <p><strong>الثقة والـ Mindset:</strong> خوف من الفشل، أو فكرة إن "النجاح" ما ينجّمش يجي من عندهم[cite: 1].</p>
+                <p><strong>المحيط المناسب:</strong> نقص في مجتمع يشجع، يحاسب، ويفتح فرص حقيقية[cite: 1].</p>
+            </div>
+        </div>
 
-    <!-- 2. صفحة تسجيل الدخول (Login) -->
-    <div id="login" class="page">
-        <div class="auth-container">
-            <div class="auth-card">
-                <h2>تسجيل الدخول</h2>
-                <form onsubmit="event.preventDefault(); alert('تم تسجيل الدخول بنجاح!'); showPage('home');">
-                    <div class="input-group">
-                        <label>البريد الإلكتروني</label>
-                        <input type="email" placeholder="أدخل بريدك الإلكتروني" required>
-                    </div>
-                    <div class="input-group">
-                        <label>كلمة المرور</label>
-                        <input type="password" placeholder="أدخل كلمة المرور" required>
-                    </div>
-                    <button type="submit" class="main-btn">دخول</button>
-                </form>
-                <div class="auth-switch">
-                    ليس لديك حساب؟ <span onclick="showPage('signup')">إنشاء حساب جديد</span>
+        <!-- رؤية ورسالة المشروع -->
+        <div class="grid-2">
+            <div class="box" style="border-color: rgba(56, 189, 248, 0.4);">
+                <h3><i class="fa-solid fa-eye"></i> الرؤية والرسالة</h3>
+                <p><strong>الرؤية:</strong> جيل تونسي واثق من نفسه، قادر يخلق دخل خاص بيه من مهاراته، وما يبقاش يستنى الفرصة — يخلقها[cite: 1].</p>
+                <p><strong>الرسالة:</strong> نوفروا تكوين وخدمات ومرافقة عملية تحول أي شاب مهتم إلى شخص عندو مهارة مطلوبة في السوق، مشروع صغير شغّال، ودخل حقيقي[cite: 1].</p>
+            </div>
+            
+            <div class="box" style="border-color: rgba(56, 189, 248, 0.4);">
+                <h3><i class="fa-solid fa-users"></i> الفئة المستهدفة (Target Audience)</h3>
+                <p>• شباب من 16 إلى 30 سنة، طلبة أو خريجين بلا عمل[cite: 1].</p>
+                <p>• أشخاص عندهم مهارة (تصوير، تصميم، مونتاج، تسويق...) لكن ما يعرفوش كيفاش يربحوا منها[cite: 1].</p>
+                <p>• أشخاص يحبوا يبداو مشروع صغير أو يعملوا فريلانس (Freelance) لكن محتاجين مرافقة[cite: 1].</p>
+            </div>
+        </div>
+
+        <!-- خدمات المشروع (5 محاور) -->
+        <h2 class="section-title" id="services">خدمات المشروع (Core Services)</h2>
+        <p class="section-desc">يبني مشروع "توعية" على خمسة محاور أساسية لضمان النجاح وتحقيق التمكين الاقتصادي الفعلي[cite: 1].</p>
+
+        <div class="services-grid">
+            
+            <!-- محور 1 -->
+            <div class="service-card">
+                <div class="service-num">01</div>
+                <h4>الفورماسيونات (التكوين - Trainings)</h4>
+                <p>• ورشات وكورسات عملية: مونتاج فيديو، تصميم، تسويق رقمي، إدارة السوشل ميديا[cite: 1].</p>
+                <p>• محتوى يركز على المهارة + كيفاش تبيعها (Pricing، عملاء، عروض)[cite: 1].</p>
+                <p>• تكوين خاص في الـ Mindset: الانضباط، إدارة الوقت، والتعامل مع الفشل[cite: 1].</p>
+            </div>
+
+            <!-- محور 2 -->
+            <div class="service-card">
+                <div class="service-num">02</div>
+                <h4>الاستشارات (Consulting)</h4>
+                <p>• جلسات فردية أو جماعية لمرافقة الشاب في اختيار مساره ووضع خطة عمل واضحة[cite: 1].</p>
+                <p>• مساعدة في بناء بورتفوليو، تسعير الخدمات، والتواصل مع أول عملاء[cite: 1].</p>
+                <p>• متابعة دورية لقياس التقدم وتصحيح المسار[cite: 1].</p>
+            </div>
+
+            <!-- محور 3 -->
+            <div class="service-card">
+                <div class="service-num">03</div>
+                <h4>خدمة المونتاج (Video Editing)</h4>
+                <p>• وحدة إنتاج داخلية تقدم خدمات مونتاج فيديو حقيقية للعملاء (سوشل ميديا، إعلانات، محتوى)[cite: 1].</p>
+                <p>• تشغّل الشباب المتكوّنين كـ Freelancers على مشاريع حقيقية — تجربة عملية + دخل فعلي[cite: 1].</p>
+                <p>• تكون بمثابة "مخبر" يربط بين التكوين والسوق مباشرة[cite: 1].</p>
+            </div>
+
+            <!-- محور 4 -->
+            <div class="service-card">
+                <div class="service-num">04</div>
+                <h4>البراندينغ (Branding)</h4>
+                <p>• بناء الهوية البصرية الكاملة للعلامات والمشاريع: لوقو، ألوان، خطوط، دليل الهوية[cite: 1].</p>
+                <p>• استراتيجية العلامة: الموقع (Positioning)، الرسالة، وطريقة الحضور في السوشل ميديا[cite: 1].</p>
+                <p>• خدمة موجهة لعملاء خارجيين وأيضًا لمشاريع الشباب المتكوّنين داخل توعية[cite: 1].</p>
+            </div>
+
+            <!-- محور 5 -->
+            <div class="service-card" style="grid-column: span auto;">
+                <div class="service-num">05</div>
+                <h4>بناء وبيع أفكار المشاريع (Business-in-a-Box)</h4>
+                <p>• موجهة لأشخاص عندهم رأس مال ويحبوا يستثمروا في مشروع بلا فكرة واضحة[cite: 1].</p>
+                <p>• توعية تدرس السوق، تخلق فكرة مشروع كاملة ومدروسة، وتبيعها للعميل كـ"مشروع جاهز للانطلاق"[cite: 1].</p>
+                <p>• مرافقة كاملة وتشغيل إضافي للشباب المتكوّنين لتنفيذ هذه المشاريع[cite: 1].</p>
+            </div>
+
+        </div>
+
+        <!-- الأثر ونموذج العمل -->
+        <div class="impact-section" id="impact">
+            <h2 class="section-title" style="text-align: right; margin-bottom: 25px;">الأثر ونموذج العمل</h2>
+            
+            <div class="impact-grid">
+                <div class="impact-item">
+                    <h4><i class="fa-solid fa-chart-line"></i> الأثر المنتظر (Impact)</h4>
+                    <p>دخول فعلية للشباب من مهارات رقمية وخدمات حرة، تغيير الـ Mindset من "نستنى فرصة" إلى "نخلق فرصة"، وبناء مجتمع شبابي داعم بديل للإحباط والبطالة[cite: 1].</p>
+                </div>
+
+                <div class="impact-item">
+                    <h4><i class="fa-solid fa-wallet"></i> نموذج العمل (Business Model)</h4>
+                    <p>اشتراكات ورسوم في الفورماسيونات، عمولة على مشاريع المونتاج والبراندينغ، بيع مشاريع "جاهزة للانطلاق" للمستثمرين، وشراكات مع مؤسسات تحتاج محتوى وهويات بصرية[cite: 1].</p>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- 3. صفحة إنشاء حساب (Sign Up) -->
-    <div id="signup" class="page">
-        <div class="auth-container">
-            <div class="auth-card">
-                <h2>حساب جديد</h2>
-                <form onsubmit="event.preventDefault(); alert('تم إنشاء الحساب بنجاح!'); showPage('login');">
-                    <div class="input-group">
-                        <label>الاسم الكامل</label>
-                        <input type="text" placeholder="أدخل اسمك الكامل" required>
-                    </div>
-                    <div class="input-group">
-                        <label>البريد الإلكتروني</label>
-                        <input type="email" placeholder="أدخل بريدك الإلكتروني" required>
-                    </div>
-                    <div class="input-group">
-                        <label>كلمة المرور</label>
-                        <input type="password" placeholder="اختر كلمة مرور قوية" required>
-                    </div>
-                    <button type="submit" class="main-btn">تسجيل</button>
-                </form>
-                <div class="auth-switch">
-                    لديك حساب بالفعل؟ <span onclick="showPage('login')">تسجيل الدخول</span>
-                </div>
+        <!-- قسم الاتصال والدعم -->
+        <div class="contact-section" id="contact">
+            <h2 class="section-title">تواصل معنا</h2>
+            <p class="section-desc">عندك سؤال، تحب تنضم للفورماسيون، أو تحب تستفسر على خدماتنا؟ تواصل معنا مباشرة:</p>
+            
+            <div class="contact-grid">
+                <a href="https://wa.me/21696937831" target="_blank" class="contact-card">
+                    <i class="fa-brands fa-whatsapp" style="color: #25d366;"></i>
+                    <span>واتساب: 96937831</span>
+                </a>
+                
+                <a href="mailto:fgaieribrahim@gmail.com" class="contact-card">
+                    <i class="fa-solid fa-envelope" style="color: #38bdf8;"></i>
+                    <span>البريد: fgaieribrahim@gmail.com</span>
+                </a>
             </div>
         </div>
+
+        <!-- قسم تسجيل الدخول / حساب المستخدم -->
+        <div class="box" id="login" style="max-width: 500px; margin: 0 auto 50px auto; text-align: center;">
+            <h3 style="justify-content: center;"><i class="fa-solid fa-right-to-bracket"></i> تسجيل الدخول للمنصة</h3>
+            <p style="margin-bottom: 20px;">ادخل لحسابك لمتابعة الدروس، الدورات، ومشاريعك الخاصة.</p>
+            
+            <form onsubmit="event.preventDefault(); alert('تم تسجيل الدخول بنجاح!');" style="display: flex; flex-direction: column; gap: 15px;">
+                <input type="email" placeholder="البريد الإلكتروني" required style="padding: 12px; border-radius: 8px; border: 1px solid var(--border); background: #0b0f19; color: #fff;">
+                <input type="password" placeholder="كلمة المرور" required style="padding: 12px; border-radius: 8px; border: 1px solid var(--border); background: #0b0f19; color: #fff;">
+                <button type="submit" class="btn" style="justify-content: center; background: var(--accent); color: #0b0f19; cursor: pointer; border: none;">دخول</button>
+            </form>
+        </div>
+
+        <!-- دعوة للتفاعل -->
+        <div class="cta-box">
+            <h3>جاهز تبدأ معنا الرحلة؟</h3>
+            <p>انضم إلى الدفعة التجريبية الأولى واكتشف كيف تحول مهاراتك إلى مصدر دخل حقيقي في تونس.</p>
+            <a href="https://wa.me/21696937831" target="_blank" class="btn"><i class="fa-solid fa-rocket"></i> انضم لـ "توعية" عبر الواتساب</a>
+        </div>
+
     </div>
 
-    <!-- التذييل -->
     <footer>
-        <p>جميع الحقوق محفوظة © 2026 - منصة توعية لتمكين الشباب.</p>
+        توعية • TAWIYA — 2026 • تونس | جميع الحقوق محفوظة
     </footer>
-
-    <!-- جافاسكريبت للتحكم بالصفحات والتمرير -->
-    <script>
-        function showPage(pageId) {
-            const pages = document.querySelectorAll('.page');
-            pages.forEach(page => page.classList.remove('active'));
-
-            document.getElementById(pageId).classList.add('active');
-            window.scrollTo(0, 0);
-        }
-
-        function scrollToSection(sectionId) {
-            showPage('home');
-            setTimeout(() => {
-                const element = document.getElementById(sectionId);
-                if(element) {
-                    element.scrollIntoView({ behavior: 'smooth' });
-                }
-            }, 100);
-        }
-    </script>
 
 </body>
 </html>
+```eof
+
+---
+
+تمت الإضافة بنجاح يا إبراهيم! توا السيت يضم:
+1. **معلومات الاتصال:** رقم الواتساب (`96,937,831`) والبريد الإلكتروني (`fgaieribrahim@gmail.com`) بشكل احترافي ومرن للتواصل المباشر[cite: 1].
+2. **مكان تسجيل الدخول:** زر في شريط التنقل العلوي يوصلك مباشرة لنموذج تسجيل الدخول الخاص بالمنصة.
+
