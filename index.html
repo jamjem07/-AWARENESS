@@ -39,7 +39,7 @@
             background-attachment: fixed;
         }
 
-        /* --- تأثير شاشة الترحيب (Welcome Intro Animation) --- */
+        /* --- شاشة الترحيب مع رسالة الترحيب المتطورة --- */
         #welcome-loader {
             position: fixed;
             top: 0;
@@ -52,26 +52,27 @@
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            transition: opacity 0.6s ease, visibility 0.6s ease;
+            transition: opacity 1.2s ease, visibility 1.2s ease;
         }
 
         .loader-content {
             text-align: center;
-            animation: fadeInScale 1.2s ease-in-out forwards;
+            animation: fadeInScale 1.8s ease-in-out forwards;
+            padding: 0 20px;
         }
 
         .loader-icon {
-            font-size: 60px;
+            font-size: 65px;
             color: var(--gold);
-            margin-bottom: 20px;
-            animation: pulseGlow 1.5s infinite alternate;
+            margin-bottom: 25px;
+            animation: pulseGlow 2.2s infinite alternate ease-in-out;
         }
 
         .loader-content h2 {
             font-size: 32px;
             font-weight: 900;
             color: #fff;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             letter-spacing: 1px;
         }
 
@@ -79,19 +80,43 @@
             color: var(--accent);
         }
 
-        .loader-content p {
-            color: var(--text-muted);
-            font-size: 15px;
+        /* رسالة الترحيب المميزة داخل الأنيميشن */
+        .welcome-message-box {
+            margin-top: 15px;
+            background: rgba(37, 99, 235, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 12px 25px;
+            border-radius: 50px;
+            display: inline-block;
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.15);
+            animation: bounceIn 1.5s ease-in-out;
+        }
+
+        .welcome-message-box p {
+            color: #38bdf8;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin: 0;
+            background: linear-gradient(90deg, #38bdf8, #60a5fa, #93c5fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         @keyframes fadeInScale {
-            0% { opacity: 0; transform: scale(0.8); }
+            0% { opacity: 0; transform: scale(0.7); }
             100% { opacity: 1; transform: scale(1); }
         }
 
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            60% { opacity: 1; transform: translateY(-5px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
         @keyframes pulseGlow {
-            0% { transform: scale(1); text-shadow: 0 0 10px rgba(245, 158, 11, 0.4); }
-            100% { transform: scale(1.1); text-shadow: 0 0 30px rgba(245, 158, 11, 0.9); }
+            0% { transform: scale(1); text-shadow: 0 0 10px rgba(245, 158, 11, 0.3); }
+            100% { transform: scale(1.12); text-shadow: 0 0 30px rgba(245, 158, 11, 0.8); }
         }
 
         /* الشريط العلوي الإعلاني */
@@ -370,10 +395,10 @@
             margin-bottom: 12px;
         }
 
-        /* --- قسم شبكات التواصل الاجتماعي (Social Links Grid) --- */
+        /* --- شبكات التواصل الاجتماعي --- */
         .social-links-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 15px;
             margin-top: 25px;
         }
@@ -408,13 +433,9 @@
             flex-shrink: 0;
         }
 
-        /* ألوان الأيقونات الخاصة بالمنصات */
         .tiktok { background: #000; border: 1px solid #333; }
-        .youtube { background: #ff0000; }
         .instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #df5914 45%, #c62937 60%, #6f2cf4 90%); }
-        .whatsapp { background: #25d366; }
-        .telegram { background: #229ed9; }
-        .facebook { background: #1877f2; }
+        .books-icon { background: var(--gold); color: #0b0f19; }
 
         .social-info h4 {
             color: #fff;
@@ -427,7 +448,7 @@
             font-size: 12px;
         }
 
-        /* قسم تواصل معنا الأصلي */
+        /* تواصل معنا */
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -503,7 +524,9 @@
         <div class="loader-content">
             <i class="fa-solid fa-lightbulb loader-icon"></i>
             <h2>منصة <span>توعية</span></h2>
-            <p>جارٍ تجهيز بيئة التمكين الشبابي...</p>
+            <div class="welcome-message-box">
+                <p>مرحباً بك في عالم التمكين والنجاح 🚀</p>
+            </div>
         </div>
     </div>
 
@@ -519,7 +542,7 @@
         <nav>
             <a href="#home">الرئيسية</a>
             <a href="#services">مجالاتنا وخدماتنا</a>
-            <a href="#socials">منصاتنا</a>
+            <a href="#socials">حساباتنا</a>
             <a href="#about">عن المشروع</a>
             <a href="#vision">الرؤية والرسالة</a>
             <a href="#contact">تواصل معنا</a>
@@ -578,7 +601,7 @@
                         <h3>قسم الإستشارات والمرافقة</h3>
                         <p>مرافقة شاملة ومباشرة للشباب لرسم خطط عملية واضحة للنجاح:</p>
                         <ul class="feature-list">
-                            <li><i class="fa-solid fa-sparkles"></i> جلسات فردية وجماعية لاختيار المسار المهني.</li>
+                            <li><i class="fa-solid fa-sparkles"></i> جلسات فردية والجماعية لاختيار المسار المهني.</li>
                             <li><i class="fa-solid fa-sparkles"></i> تطوير مهارات التواصل الفعّال.</li>
                             <li><i class="fa-solid fa-sparkles"></i> متابعة دورية لقياس التقدم وتصحيح المسار.</li>
                         </ul>
@@ -620,55 +643,39 @@
         </div>
 
         <div class="section-box" id="socials">
-            <h2><i class="fa-solid fa-share-nodes" style="color: var(--accent);"></i> تابع منصة توعية على شبكات التواصل</h2>
-            <p>كن على اتصال دائري معنا، تابع جديدنا، واستفد من محتوانا اليومي عبر منصاتنا المختلفة:</p>
+            <h2><i class="fa-solid fa-share-nodes" style="color: var(--accent);"></i> حساباتنا والمنصات الرسمية</h2>
+            <p>تابع الحسابات الرسمية وتعرف على المشاريع والمحتوى الخاص بنا عبر المنصات التالية:</p>
             
             <div class="social-links-grid">
-                <a href="رابط_تيكتوك_الخاص_بك" target="_blank" class="social-card">
+                <a href="https://www.instagram.com/iamibrahimfgaier?igsi=MWs1bTlpa3QxeXpjOA==" target="_blank" class="social-card">
+                    <div class="social-icon instagram"><i class="fa-brands fa-instagram"></i></div>
+                    <div class="social-info">
+                        <h4>حساب إبراهيم</h4>
+                        <span>Instagram الشخصي</span>
+                    </div>
+                </a>
+
+                <a href="https://www.instagram.com/mer_mediteranee_academy?igsh=MTJ0aGlwbm93aHhyNg==" target="_blank" class="social-card">
+                    <div class="social-icon instagram"><i class="fa-brands fa-instagram"></i></div>
+                    <div class="social-info">
+                        <h4>Mer Mediterranee Academy</h4>
+                        <span>أكاديمية البحر الأبيض المتوسط</span>
+                    </div>
+                </a>
+
+                <a href="http://tiktok.com/@docteur.ramzi.fga" target="_blank" class="social-card">
                     <div class="social-icon tiktok"><i class="fa-brands fa-tiktok"></i></div>
                     <div class="social-info">
                         <h4>TikTok</h4>
-                        <span>تابع الفيديوهات القصيرة</span>
+                        <span>@docteur.ramzi.fga</span>
                     </div>
                 </a>
 
-                <a href="رابط_انستغرام_الخاص_بك" target="_blank" class="social-card">
-                    <div class="social-icon instagram"><i class="fa-brands fa-instagram"></i></div>
+                <a href="https://www.noor-book.com/u/%D8%B1%D9%85%D8%B2%D9%85%D9%8ي-%D8%A8%D9%86-%D8%B9%D8%A8%D8%AF-%D8%A7%D9%84%D9%85%D8%AC%D9%8A%D8%AF-%D8%A7%D9%84%D9%81%D9%82%D9%8A%D8%B1/books" target="_blank" class="social-card">
+                    <div class="social-icon books-icon"><i class="fa-solid fa-book-open"></i></div>
                     <div class="social-info">
-                        <h4>Instagram</h4>
-                        <span>يوميات الـ Reels والستوري</span>
-                    </div>
-                </a>
-
-                <a href="رابط_يوتيوب_الخاص_بك" target="_blank" class="social-card">
-                    <div class="social-icon youtube"><i class="fa-brands fa-youtube"></i></div>
-                    <div class="social-info">
-                        <h4>YouTube</h4>
-                        <span>المحتوى المطول والمقابلات</span>
-                    </div>
-                </a>
-
-                <a href="رابط_مجموعة_أو_رقم_واتساب" target="_blank" class="social-card">
-                    <div class="social-icon whatsapp"><i class="fa-brands fa-whatsapp"></i></div>
-                    <div class="social-info">
-                        <h4>WhatsApp</h4>
-                        <span>تواصل مباشر وسريع</span>
-                    </div>
-                </a>
-
-                <a href="رابط_قناة_تليجرام" target="_blank" class="social-card">
-                    <div class="social-icon telegram"><i class="fa-brands fa-telegram"></i></div>
-                    <div class="social-info">
-                        <h4>Telegram</h4>
-                        <span>مجموعة الدعم والتوجيه</span>
-                    </div>
-                </a>
-
-                <a href="رابط_صفحة_فايسبوك" target="_blank" class="social-card">
-                    <div class="social-icon facebook"><i class="fa-brands fa-facebook"></i></div>
-                    <div class="social-info">
-                        <h4>Facebook</h4>
-                        <span>صفحة المجتمع الرسمي</span>
+                        <h4>مكتبة الكتب</h4>
+                        <span>منصة نور للكتب</span>
                     </div>
                 </a>
             </div>
@@ -725,11 +732,10 @@
     <script>
         window.addEventListener('load', function() {
             const loader = document.getElementById('welcome-loader');
-            // تأخير بسيط لمدة 1.2 ثانية لتظهر الأنيميشن بشكل أنيق ثم تختفي بسلاسة
             setTimeout(function() {
                 loader.style.opacity = '0';
                 loader.style.visibility = 'hidden';
-            }, 1200);
+            }, 1800);
         });
     </script>
 
