@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تسجيل الدخول / إنشاء حساب | توعية - TAWIYA</title>
+    <title>توعية | تسجيل الدخول</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
@@ -11,8 +11,8 @@
     
     <style>
         :root {
-            --bg-color: #0b0f19;
-            --card-bg: #111827;
+            --bg-color: #050810;
+            --card-bg: #0b0f19;
             --accent: #38bdf8;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
@@ -34,217 +34,303 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-        }
-
-        header {
-            background: rgba(11, 15, 25, 0.9);
-            border-bottom: 1px solid var(--border);
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
             align-items: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 50% 20%, rgba(56, 189, 248, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 10% 80%, rgba(245, 158, 11, 0.03) 0%, transparent 40%);
         }
 
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-        }
-
-        .bulb-logo {
-            font-size: 24px;
-            color: var(--gold);
-            animation: bulbGlow 2.5s infinite alternate ease-in-out;
-        }
-
-        @keyframes bulbGlow {
-            0% { color: #555; text-shadow: none; }
-            50% { color: var(--gold); text-shadow: 0 0 12px var(--gold); }
-            100% { color: #555; text-shadow: none; }
-        }
-
-        .logo {
-            font-size: 20px;
-            font-weight: 900;
-            color: var(--accent);
-        }
-
-        nav a {
+        /* زر العودة للرئيسية */
+        .back-home {
+            position: absolute;
+            top: 25px;
+            right: 30px;
             color: var(--text-muted);
             text-decoration: none;
             font-size: 14px;
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
             transition: color 0.2s;
+            z-index: 10;
         }
 
-        nav a:hover { color: var(--accent); }
+        .back-home:hover {
+            color: var(--accent);
+        }
 
-        .auth-container {
-            max-width: 440px;
-            width: 90%;
-            margin: 40px auto;
+        /* حاوية نموذج تسجيل الدخول مع تأثير الإضاءة والـ Border المتوهج */
+        .login-wrapper {
+            width: 100%;
+            max-width: 420px;
             background: var(--card-bg);
             border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 35px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            border-radius: 24px;
+            padding: 45px 35px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+            position: relative;
+            overflow: hidden;
+            margin: auto 0;
+            animation: boxFadeIn 0.8s ease-out;
         }
 
-        .tabs {
-            display: flex;
-            margin-bottom: 25px;
-            border-bottom: 1px solid var(--border);
+        @keyframes boxFadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .tab-btn {
-            flex: 1;
-            background: none;
-            border: none;
+        /* 🌟 تأثير شعاع الضوء المتحرك (Light Beam/Sweep) المماثل للفيديو 🌟 */
+        .login-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 45%,
+                rgba(56, 189, 248, 0.08) 48%,
+                rgba(245, 158, 11, 0.15) 50%, /* ومضة شعاع الضوء الذهبي/الأزرق */
+                rgba(56, 189, 248, 0.08) 52%,
+                transparent 55%
+            );
+            transform: rotate(35deg);
+            animation: lightSweep 6s infinite ease-in-out;
+            pointer-events: none;
+        }
+
+        @keyframes lightSweep {
+            0% { transform: translateY(-100%) rotate(35deg); }
+            50% { transform: translateY(100%) rotate(35deg); }
+            100% { transform: translateY(-100%) rotate(35deg); }
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 35px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .login-header .bulb-icon {
+            font-size: 32px;
+            color: var(--gold);
+            margin-bottom: 12px;
+            text-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
+        }
+
+        .login-header h1 {
+            font-size: 26px;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .login-header p {
             color: var(--text-muted);
-            font-size: 16px;
-            font-weight: 700;
-            padding-bottom: 12px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .tab-btn.active {
-            color: var(--accent);
-            border-bottom: 2px solid var(--accent);
-        }
-
-        .form-section {
-            display: none;
-        }
-
-        .form-section.active {
-            display: block;
+            font-size: 14px;
         }
 
         .form-group {
-            margin-bottom: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
         }
 
         .form-group label {
             display: block;
             font-size: 13px;
+            font-weight: 600;
             color: var(--text-muted);
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
 
-        .form-group input {
+        .form-control {
             width: 100%;
-            padding: 12px;
-            border-radius: 8px;
+            background: rgba(17, 24, 39, 0.8);
             border: 1px solid var(--border);
-            background: #0b0f19;
+            border-radius: 12px;
+            padding: 14px 16px;
             color: #fff;
             font-size: 14px;
+            transition: all 0.3s ease;
         }
 
-        .form-group input:focus {
+        .form-control:focus {
             outline: none;
             border-color: var(--accent);
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.15);
         }
 
-        .submit-btn {
-            width: 100%;
-            background: var(--accent);
-            color: #0b0f19;
-            padding: 12px;
-            border-radius: 8px;
-            font-weight: 700;
-            border: none;
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
             cursor: pointer;
-            font-size: 15px;
-            margin-top: 10px;
+        }
+
+        .remember-me input {
+            accent-color: var(--accent);
+        }
+
+        .forgot-pass {
+            color: var(--accent);
+            text-decoration: none;
             transition: opacity 0.2s;
         }
 
-        .submit-btn:hover {
-            opacity: 0.9;
+        .forgot-pass:hover {
+            opacity: 0.8;
         }
+
+        .btn-submit {
+            width: 100%;
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 25px rgba(37, 99, 235, 0.5);
+        }
+
+        .login-footer-text {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 13px;
+            color: var(--text-muted);
+            position: relative;
+            z-index: 2;
+        }
+
+        .login-footer-text a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* روابط التواصل السريع المصغرة أسفل الصفحة */
+        .quick-contact-bar {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            justify-content: center;
+            font-size: 13px;
+            z-index: 10;
+        }
+
+        .quick-contact-bar a {
+            color: var(--text-muted);
+            text-decoration: none;
+            background: rgba(30, 41, 59, 0.4);
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .quick-contact-bar a.wa:hover { border-color: #25D366; color: #25D366; }
+        .quick-contact-bar a.ph:hover { border-color: var(--accent); color: var(--accent); }
 
         footer {
             text-align: center;
             padding: 20px;
             color: var(--text-muted);
-            font-size: 13px;
-            border-top: 1px solid var(--border);
+            font-size: 12px;
+            width: 100%;
+        }
+
+        @media(max-width: 480px) {
+            .login-wrapper { padding: 30px 20px; }
+            .back-home { top: 15px; right: 20px; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <a href="index.html" class="logo-area">
-            <i class="fa-solid fa-lightbulb bulb-logo"></i>
-            <span class="logo">توعية | TAWIYA</span>
-        </a>
-        <nav>
-            <a href="index.html"><i class="fa-solid fa-arrow-right"></i> العودة للرئيسية</a>
-        </nav>
-    </header>
+    <a href="index.html" class="back-home">
+        <i class="fa-solid fa-arrow-right"></i> الرئيسية
+    </a>
 
-    <div class="auth-container">
-        <div class="tabs">
-            <button class="tab-btn active" onclick="switchTab('login')">تسجيل الدخول</button>
-            <button class="tab-btn" onclick="switchTab('signup')">إنشاء حساب جديد</button>
+    <div></div> <!-- مسافة توازنية -->
+
+    <!-- نافذة تسجيل الدخول مع تأثير الضوء المتحرك -->
+    <div class="login-wrapper">
+        <div class="login-header">
+            <i class="fa-solid fa-lightbulb bulb-icon"></i>
+            <h1>مرحباً بك مجدداً</h1>
+            <p>سجل دخولك لمتابعة خدمات منصة توعية</p>
         </div>
 
-        <!-- فورم تسجيل الدخول -->
-        <div id="login-form" class="form-section active">
-            <form onsubmit="event.preventDefault(); alert('تم تسجيل الدخول بنجاح!');">
-                <div class="form-group">
-                    <label>البريد الإلكتروني</label>
-                    <input type="email" placeholder="name@example.com" required>
-                </div>
-                <div class="form-group">
-                    <label>كلمة المرور</label>
-                    <input type="password" placeholder="••••••••" required>
-                </div>
-                <button type="submit" class="submit-btn">تسجيل الدخول</button>
-            </form>
-        </div>
+        <form onsubmit="event.preventDefault(); alert('تم تسجيل الدخول بنجاح!');">
+            <div class="form-group">
+                <label>البريد الإلكتروني</name>
+                <input type="email" class="form-control" placeholder="name@example.com" required>
+            </div>
 
-        <!-- فورم إنشاء حساب -->
-        <div id="signup-form" class="form-section">
-            <form onsubmit="event.preventDefault(); alert('تم إنشاء الحساب بنجاح!');">
-                <div class="form-group">
-                    <label>الاسم الكامل</label>
-                    <input type="text" placeholder="محمد إبراهيم" required>
-                </div>
-                <div class="form-group">
-                    <label>البريد الإلكتروني</label>
-                    <input type="email" placeholder="name@example.com" required>
-                </div>
-                <div class="form-group">
-                    <label>كلمة المرور</label>
-                    <input type="password" placeholder="••••••••" required>
-                </div>
-                <button type="submit" class="submit-btn">إنشاء حساب جديد</button>
-            </form>
+            <div class="form-group">
+                <label>كلمة المرور</label>
+                <input type="password" class="form-control" placeholder="••••••••" required>
+            </div>
+
+            <div class="form-options">
+                <label class="remember-me">
+                    <input type="checkbox"> تذكرني
+                </label>
+                <a href="#" class="forgot-pass">نسيت كلمة المرور؟</a>
+            </div>
+
+            <button type="submit" class="btn-submit">تسجيل الدخول</button>
+        </form>
+
+        <div class="login-footer-text">
+            ليس لديك حساب؟ <a href="#">إنشاء حساب جديد</a>
         </div>
     </div>
 
-    <footer>
-        توعية • TAWIYA — 2026 • تونس
-    </footer>
+    <!-- شريط التواصل السريع بالأسفل -->
+    <div>
+        <div class="quick-contact-bar">
+            <a href="https://wa.me/21696937831" target="_blank" class="wa">
+                <i class="fa-brands fa-whatsapp"></i> 96 937 831
+            </a>
+            <a href="tel:+21696994195" class="ph">
+                <i class="fa-solid fa-phone"></i> 96 994 195
+            </a>
+        </div>
+        <footer>
+            توعية • TAWIYA — 2026
+        </footer>
+    </div>
 
-    <script>
-        function switchTab(tab) {
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.form-section').forEach(sec => sec.classList.remove('active'));
-            
-            if(tab === 'login') {
-                document.querySelectorAll('.tab-btn')[0].classList.add('active');
-                document.getElementById('login-form').classList.add('active');
-            } else {
-                document.querySelectorAll('.tab-btn')[1].classList.add('active');
-                document.getElementById('signup-form').classList.add('active');
-            }
-        }
-    </script>
 </body>
 </html>
